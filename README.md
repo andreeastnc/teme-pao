@@ -1,6 +1,6 @@
-** SPECTACOLE **
+**SPECTACOLE**
 
-** CLASE **
+**CLASE**
 1. Client - persoana fara discount
 2. Student - persoana cu discount de 25%, extensie client
 3. Elev - persoana cu discount de 50%, extensie client
@@ -10,7 +10,7 @@
 7. Spectacol - numar locuri, pret
 8. Loc - numarul locului in sala de spectacol
 
-**ACTIUNI/ INTEROGARI **
+**ACTIUNI/ INTEROGARI**
 1. Afisare clienti
 2. Afisare clienti dupa numar
 3. Afisare clienti cu discount
