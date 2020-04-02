@@ -137,6 +137,7 @@ public class Main {
         serviceBilet.addBilet(new Bilet(serviceSpectacol.getSpectacolById(1), new Loc(2), serviceClient.getClientByNumar(4)));
         serviceBilet.addBilet(new Bilet(serviceSpectacol.getSpectacolById(1), new Loc(3), serviceClient.getClientByNumar(6)));
         serviceBilet.addBilet(new Bilet(serviceSpectacol.getSpectacolById(1), new Loc(3), serviceClient.getClientByNumar(2)));
+        
         ArrayList<Bilet> bilete = serviceBilet.getAllBilete();
         System.out.println();
         System.out.println("AFISARE BILETE:");
