@@ -22,6 +22,10 @@ public class Client {
         return pret;
     }
 
+    public int tip() {
+        return 0;
+    }
+
     public void show() {
         System.out.println("Client " + getNumarClient() + ": " + getNumeClient() + ", " + "fara discount");
     }

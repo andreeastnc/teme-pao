@@ -11,6 +11,10 @@ public class Elev extends Client{
         return discount;
     }
 
+    public final int tip() {
+        return 1;
+    }
+
     @Override
     public double getPret(double pret) {
         return super.getPret(pret) * (100 - discount) / 100;

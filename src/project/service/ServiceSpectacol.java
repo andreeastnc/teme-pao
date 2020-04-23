@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class ServiceSpectacol {
     private RepositorySpectacol repositorySpectacol = new RepositorySpectacol();
     private static ServiceSpectacol instanta = new ServiceSpectacol();
+    FileWritingSpectacol fileWritingSpectacol = FileWritingSpectacol.getInstantaScriere();
+    AuditService auditService = AuditService.getInstanta();
 
     private ServiceSpectacol() { }
 
@@ -44,4 +46,20 @@ public class ServiceSpectacol {
     public void showSpectacol(Spectacol spectacol) {
         repositorySpectacol.showSpectacol(spectacol);
     }
+
+
+    public void addExistingShow(Spectacol spectacol) {
+        auditService.actiune("Adaugare spectacol din fisier", auditService.getTimestamp());
+        repositorySpectacol.add(spectacol);
+    }
+
+    public void getSpectacoleDinFisier() {
+        auditService.actiune("Ia toate spectacolele din fisier", auditService.getTimestamp());
+        FileReadingSpectacol fileReadingSpectacol = FileReadingSpectacol.getReadingInstanta();
+        ArrayList<Spectacol> spectacole = fileReadingSpectacol.citireSpectacole();
+        for(Spectacol spectacol : spectacole) {
+            addExistingShow(spectacol);
+        }
+    }
+
 }

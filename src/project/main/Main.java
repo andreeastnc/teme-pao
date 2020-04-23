@@ -18,14 +18,76 @@ contine:
 package project.main;
 
 import project.model.*;
-import project.service.ServiceBilet;
 import project.service.ServiceClient;
 import project.service.ServiceSpectacol;
-
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ServiceClient serviceClient = ServiceClient.getInstanta();
+        ServiceSpectacol serviceSpectacol = ServiceSpectacol.getInstanta();
+        serviceClient.getClientiDinFisier();
+        serviceSpectacol.getSpectacoleDinFisier();
+
+        int userChoice = -1;
+        do {
+            System.out.println("1. Adauga un client nou.\n" +
+                    "2. Adauga un spectacol nou.\n" +
+                    "3. Adauga un bilet nou.\n" +
+                    "0. Iesire.\n");
+
+            Scanner in = new Scanner(System.in);
+            userChoice = in.nextInt();
+            switch (userChoice) {
+                case 1:
+                    System.out.println("Alege tipul clientului:\n1. Elev\n2. Student\n3. Copil\n4. Pensionar\n5. Niciunul");
+                    int userChoice2 = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Introdu numele clientului: ");
+                    String numeClient = in.nextLine();
+                    switch (userChoice2) {
+                        case 1:
+                            serviceClient.addClient(new Elev(numeClient));
+                            break;
+                        case 2:
+                            serviceClient.addClient(new Student(numeClient));
+                            break;
+                        case 3:
+                            serviceClient.addClient(new Copil(numeClient));
+                            break;
+                        case 4:
+                            serviceClient.addClient(new Pensionar(numeClient));
+                            break;
+                        case 5:
+                            serviceClient.addClient(new Client(numeClient));
+                            break;
+                        default:
+                            System.out.println("Optiune invalida!\n");
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("Introdu numele spectacolului: ");
+                    String numeSpectacol = in.nextLine();
+                    in.nextLine();
+                    System.out.println("Introdu pretul spectacolului: ");
+                    int pretSpectacol = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Introdu numarul de locuri disponibile: ");
+                    int numarLocuriSpectacol = in.nextInt();
+                    in.nextLine();
+                    serviceSpectacol.addSpectacol(new Spectacol(numeSpectacol, pretSpectacol, numarLocuriSpectacol));
+                    break;
+                case 3:
+                    System.out.println("Nu am reusit sa termin aceasta functie. ");
+                    break;
+                default:
+                    System.out.println("Optiune invalida!\n");
+                    break;
+            }
+        } while (userChoice != 0);
+
+        /*
         //initializare clienti
         ServiceClient serviceClient = ServiceClient.getInstanta();
 
@@ -163,5 +225,7 @@ public class Main {
         for(Bilet bilet : bilete) {
             serviceBilet.showBilet(bilet);
         }
+    }
+    */
     }
 }

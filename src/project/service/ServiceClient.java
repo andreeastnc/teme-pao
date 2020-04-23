@@ -9,6 +9,10 @@ public class ServiceClient {
     private RepositoryClient repositoryClient = new RepositoryClient();
     private static ServiceClient instanta = new ServiceClient();
 
+    FileWritingClient fileWritingClient = FileWritingClient.getWritingInstanta();
+    AuditService auditService = AuditService.getInstanta();
+
+
     private ServiceClient() { }
 
     public static ServiceClient getInstanta() {
@@ -17,6 +21,9 @@ public class ServiceClient {
 
     public void addClient(Client client) {
         repositoryClient.add(client);
+        auditService.actiune("Adaugare client nou", auditService.getTimestamp());
+        fileWritingClient.scriereClient(client);
+
     }
 
     public void showClient(Client client) {
@@ -66,5 +73,19 @@ public class ServiceClient {
             serviceBilet.anulareBilet(bilet.getNumarBilet());
         }
         repositoryClient.stergere(client);
+    }
+
+    public void addClientExistent(Client client) {
+        auditService.actiune("Adaugarea unui client existent in fisier", auditService.getTimestamp());
+        repositoryClient.add(client);
+    }
+
+    public void getClientiDinFisier() {
+        auditService.actiune("Ia toti clientii din fisier", auditService.getTimestamp());
+        FileReadingClient fileReadingClient = FileReadingClient.getReadingInstanta();
+        ArrayList<Client> clienti = fileReadingClient.readClienti();
+        for(Client client: clienti) {
+            addClientExistent(client);
+        }
     }
 }

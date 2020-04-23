@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class ServiceBilet {
     private RepositoryBilet repositoryBilet = new RepositoryBilet();
     private static ServiceBilet instanta = new ServiceBilet();
+    //TicketWritingService ticketWritingService = TicketWritingService.getWritingInstance();
+    //AuditService auditService = AuditService.getInstance();
 
     private ServiceBilet() { }
 

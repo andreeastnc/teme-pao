@@ -12,6 +12,11 @@ public class Student extends Client {
     }
 
     @Override
+    public int tip() {
+        return 2;
+    }
+
+    @Override
     public double getPret(double pret) {
         return super.getPret(pret) * (100 - discount) / 100;
     }

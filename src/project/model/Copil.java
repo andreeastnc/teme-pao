@@ -14,6 +14,10 @@ public class Copil extends Client{
         return discount;
     }
 
+    public final int tip() {
+        return 3;
+    }
+
     @Override
     public double getPret(double pret) {
         return 0;
