@@ -83,7 +83,8 @@ public class ServiceClient {
     public void getClientiDinFisier() {
         auditService.actiune("Ia toti clientii din fisier", auditService.getTimestamp());
         FileReadingClient fileReadingClient = FileReadingClient.getReadingInstanta();
-        ArrayList<Client> clienti = fileReadingClient.readClienti();
+        ArrayList<Client> clienti;
+        clienti = fileReadingClient.readClienti();
         for(Client client: clienti) {
             addClientExistent(client);
         }

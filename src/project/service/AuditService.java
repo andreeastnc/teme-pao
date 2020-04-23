@@ -1,11 +1,9 @@
 package project.service;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 public class AuditService {
@@ -15,23 +13,17 @@ public class AuditService {
         return instanta;
     }
 
-    public Path getPath() {
-        return Paths.get("serviciu-audit.csv");
-    }
-
     public String getTimestamp() {
-        Date date = new Date();
-        long time = date.getTime();
-        Timestamp ts = new Timestamp(time);
-        return ts.toString();
+        String timeStamp = new SimpleDateFormat("dd.mm.yyyy hh:mm:ss").format(new Date());
+        return timeStamp;
     }
 
     public void actiune(String nume_actiune, String timestamp_actiune) {
-        try (FileWriter csvWriter = new FileWriter(String.valueOf(getPath()), true)) {
+        try (FileWriter csv = new FileWriter("serviciu-audit.csv", true)) {
             List<String> line =  Arrays.asList(nume_actiune, timestamp_actiune);
-            csvWriter.append(String.join(",", line));
-            csvWriter.append("\n");
-            csvWriter.flush();
+            csv.append(String.join(",", line));
+            csv.append("\n");
+            csv.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
