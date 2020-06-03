@@ -12,7 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BDRepositorySpectacol {
+    private Connection connection = null;
     public BDRepositorySpectacol() {}
+    public BDRepositorySpectacol(Connection connection) {
+        this.connection = connection;
+    }
 
     public void add(Spectacol spectacol) throws SQLException {
         Connection connection = BDConnection.getBDConnection();

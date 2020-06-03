@@ -1,8 +1,9 @@
-package gui;
+package project.gui;
 
 import project.model.Client;
 import project.repository.BDConnection;
 import project.repository.BDRepositoryClient;
+import project.service.BDBiletService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,8 @@ public class ManageClientFrame extends JFrame {
     private Connection connection = BDConnection.getBDConnection();
     private BDRepositoryClient repository = new BDRepositoryClient(connection);
 
-    public ManageClientFrame(String title) throws SQLException {
-        super(title);
+    public ManageClientFrame(JFrame title) throws SQLException {
+        super(String.valueOf(title));
 
         JLabel nameLabel = new JLabel("Nume: " );
         JTextField name = new JTextField();
