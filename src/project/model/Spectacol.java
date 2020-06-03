@@ -22,6 +22,10 @@ public class Spectacol {
         this.idSpectacol = ++id;
     }
 
+    public Spectacol(String string) {
+        this.numeSpectacol = numeSpectacol;
+    }
+
     public int getPret() {
         return pret;
     }
