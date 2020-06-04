@@ -4,16 +4,19 @@ import project.model.Client;
 import project.repository.BDConnection;
 import project.repository.BDRepositoryClient;
 import project.service.BDBiletService;
+import project.service.BDClientService;
+import project.service.ServiceClient;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class ManageClientFrame extends JFrame {
-
     private Connection connection = BDConnection.getBDConnection();
     private BDRepositoryClient repository = new BDRepositoryClient(connection);
+    BDClientService serviceClient = BDClientService.getInstanta();
 
     public ManageClientFrame(JFrame title) throws SQLException {
         super(String.valueOf(title));
@@ -23,15 +26,11 @@ public class ManageClientFrame extends JFrame {
         nameLabel.setBounds(0, 50, 200, 30);
         name.setBounds(60, 50, 200, 30);
 
+
+        Scanner s = new Scanner(System.in);
         JButton button = new JButton("Adauga client: ");
         button.setBounds(80, 150, 150, 30);
-        button.addActionListener(event -> {
-            try {
-                addClientDB(name);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
+        button.addActionListener(event -> serviceClient.addClient(s));
 
         JLabel listLabel = new JLabel("Lista tuturor clientilor: ");
         listLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -52,14 +51,6 @@ public class ManageClientFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
-    }
-
-    public void addClientDB(JTextField name) throws SQLException {
-        String n1 = name.getText();
-        Client client = new Client(n1);
-        this.repository.add(client);
-        JOptionPane.showMessageDialog(this, "Clientul a fost adaugat cu succes!");
-
     }
 
     public Client[] getClienti() throws SQLException {

@@ -20,21 +20,21 @@ public class ManageSpectacolFrame extends JFrame {
 
         JLabel nameLabel = new JLabel("Nume: " );
         JTextField name = new JTextField();
-        nameLabel.setBounds(0, 50, 200, 30);
-        name.setBounds(60, 50, 200, 30);
+        nameLabel.setBounds(0, 20, 200, 30);
+        name.setBounds(60, 20, 200, 30);
 
         JLabel priceLabel = new JLabel("Pret: " );
         JTextField pret = new JTextField();
-        nameLabel.setBounds(0, 50, 200, 30);
-        name.setBounds(80, 60, 200, 30);
+        priceLabel.setBounds(0, 60, 200, 30);
+        pret.setBounds(60, 60, 200, 30);
 
         JLabel nrLocuriLabel = new JLabel("Numar locuri: " );
         JTextField numarLocuri = new JTextField();
-        nameLabel.setBounds(0, 50, 200, 30);
-        name.setBounds(100, 80, 200, 30);
+        nrLocuriLabel.setBounds(0, 100, 200, 30);
+        numarLocuri.setBounds(80, 100, 200, 30);
 
         JButton button = new JButton("Adauga spectacol: ");
-        button.setBounds(120, 190, 150, 30);
+        button.setBounds(60, 140, 150, 30);
         button.addActionListener(event -> {
             try {
                 addSpectacolBD(name, pret, numarLocuri);

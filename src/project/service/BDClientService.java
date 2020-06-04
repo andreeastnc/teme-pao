@@ -2,13 +2,19 @@ package project.service;
 
 import project.model.Client;
 import project.repository.BDRepositoryClient;
+import project.repository.RepositoryClient;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BDClientService {
-    private BDRepositoryClient repositoryClient;
+    private BDRepositoryClient repositoryClient = new BDRepositoryClient();
     private AuditService auditService;
+    private static BDClientService instanta = new BDClientService();
+
+    public static BDClientService getInstanta() {
+        return instanta;
+    }
 
     public BDClientService()
     {

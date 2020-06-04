@@ -13,21 +13,14 @@ public class MainGUI {
     public static void main(String[] args) throws SQLException {
         //new ManageClientFrame("Adding client to data base");
 
-        f = new JFrame("Main Menu");
+        f = new JFrame("Meniu Principal");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setMinimumSize(new Dimension(300, 300));
-        f.getContentPane().setBackground(Color.darkGray);
+        f.setMinimumSize(new Dimension(500, 500));
+        f.getContentPane().setBackground(Color.lightGray);
         f.setLayout(null);
 
-        JLabel title = new JLabel("Spectacole");
-        title.setBounds(0,10,300,30);
-        title.setHorizontalTextPosition(SwingConstants.CENTER);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setForeground(Color.white);
-        f.add(title);
-
-        button = new JButton("Client Menu");
-        button.setBounds(75, 60, 150, 30);
+        button = new JButton("Meniu Client");
+        button.setBounds(150, 90, 200, 50);
         button.addActionListener(event -> {
             try {
                 openClientMenu();
@@ -37,8 +30,8 @@ public class MainGUI {
         });
         f.add(button);
 
-        button = new JButton("Spectacol Menu");
-        button.setBounds(75, 100, 150, 30);
+        button = new JButton("Meniu Spectacol");
+        button.setBounds(150, 160, 200, 50);
         button.addActionListener(event -> {
             try {
                 openSpectacolMenu();
@@ -49,8 +42,8 @@ public class MainGUI {
         f.add(button);
 
 
-        button = new JButton("Quit");
-        button.setBounds(100, 200, 100, 30);
+        button = new JButton("Iesire");
+        button.setBounds(150, 260, 200, 50);
         button.addActionListener(event -> quit());
         f.add(button);
 
